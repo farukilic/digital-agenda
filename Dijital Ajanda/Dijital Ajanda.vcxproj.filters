@@ -19,4 +19,9 @@
       <Filter>Kaynak Dosyalar</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Veri.txt">
+      <Filter>Kaynak Dosyalar</Filter>
+    </Text>
+  </ItemGroup>
 </Project>
