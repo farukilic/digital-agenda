@@ -87,10 +87,10 @@ int main() {
 
 	//ofstream dosya("Veri.txt", ios::app);
 	//Üstteki kod her bir giriş bilgilerini tek tek dosyaya kaydediyor. Hiçbir giriş kaybolmuyor.
-	ofstream dosya("Veri.txt");
+	ofstream dosya("Admin_Information.txt");
 	//Bir üst satırdaki kod ise geçici olarak giriş bilgilerini tutuyor.
 	dosya << user.kullanici_adi << "\n" << user.isim << "\n" << user.soyisim << "\n" << user.sifre << "\n" << user.yas << "\n" << user.telefon_numarası << "\n" << user.kayıt_zamanı << "\n";
-	/*Bu şekilde ayrı da yazılabilir belki bir yolu vardır ama bu durumda alt alta yazamadım.
+	/*Alttaki gibi ayrı da yazılabilir ama o zaman txt dosyasına alt alta yazılmıyor.Belki bir yolu vardır ama bulamadım.
 	dosya << user.isim;
 	dosya << user.soyisim;
 	dosya << user.sifre; 
@@ -99,6 +99,7 @@ int main() {
 	dosya << user.kayıt_zamanı;*/
 	dosya.close();
 	
+
 
 
 }

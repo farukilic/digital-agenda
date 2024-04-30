@@ -130,7 +130,7 @@
     <ClCompile Include="Dijital Ajanda.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Veri.txt" />
+    <Text Include="Admin_Information.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

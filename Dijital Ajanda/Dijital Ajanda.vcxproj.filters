@@ -20,7 +20,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Veri.txt">
+    <Text Include="Admin_Information.txt">
       <Filter>Kaynak Dosyalar</Filter>
     </Text>
   </ItemGroup>
