@@ -5,10 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{809FF295-76D2-4A41-83F1-F8347CDE8979}|Dijital Ajanda.vcxproj|C:\\Users\\baska\\OneDrive\\Documentos\\Github Repolar\u0131\\digital-agenda\\Dijital Ajanda\\Dijital Ajanda.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{809FF295-76D2-4A41-83F1-F8347CDE8979}|Dijital Ajanda.vcxproj|solutionrelative:Dijital Ajanda.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{809FF295-76D2-4A41-83F1-F8347CDE8979}|Dijital Ajanda.vcxproj|C:\\Users\\baska\\OneDrive\\Documentos\\Github Repolar\u0131\\digital-agenda\\Dijital Ajanda\\Veri.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{809FF295-76D2-4A41-83F1-F8347CDE8979}|Dijital Ajanda.vcxproj|solutionrelative:Veri.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,21 +14,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Veri.txt",
-              "DocumentMoniker": "C:\\Users\\baska\\OneDrive\\Documentos\\Github Repolar\u0131\\digital-agenda\\Dijital Ajanda\\Veri.txt",
-              "RelativeDocumentMoniker": "Veri.txt",
-              "ToolTip": "C:\\Users\\baska\\OneDrive\\Documentos\\Github Repolar\u0131\\digital-agenda\\Dijital Ajanda\\Veri.txt",
-              "RelativeToolTip": "Veri.txt",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-04-29T21:31:16.986Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -41,7 +24,7 @@
               "RelativeDocumentMoniker": "Dijital Ajanda.cpp",
               "ToolTip": "C:\\Users\\baska\\OneDrive\\Documentos\\Github Repolar\u0131\\digital-agenda\\Dijital Ajanda\\Dijital Ajanda.cpp",
               "RelativeToolTip": "Dijital Ajanda.cpp",
-              "ViewState": "AQIAADwAAAAAAAAAAAAAAE8AAAAAAAAA",
+              "ViewState": "AQIAAFEAAAAAAAAAAAAAAGUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-04-29T14:55:09.205Z",
               "EditorCaption": ""

@@ -23,6 +23,8 @@ struct User {
 	string soyisim;
 	string sifre;
 	int yas;
+	string telefon_numarası;
+	string kayıt_zamanı;
 };
 
 int main() {
@@ -70,12 +72,33 @@ int main() {
 		cout << "Yaşınız uygun değildir! \n";
 		cin >> user.yas;
 	}
+
+	cout << "Numaranızı giriniz:(Başına '0' koymayınız.)\n";
+	getline(cin, user.telefon_numarası);
+	cin >> user.telefon_numarası;
+	while (user.telefon_numarası.size() != 10) {
+		cout << "Yanlış girdiniz. Tekrar giriniz:";
+		cin >> user.telefon_numarası;
+	}
+
+	//Alttaki kod kullanıcının ne zaman kayıt olduğu verisini tutuyor.
+	user.kayıt_zamanı = asctime(tarih);
+	
+
+	//ofstream dosya("Veri.txt", ios::app);
+	//Üstteki kod her bir giriş bilgilerini tek tek dosyaya kaydediyor. Hiçbir giriş kaybolmuyor.
 	ofstream dosya("Veri.txt");
-	dosya << user.kullanici_adi;
+	//Bir üst satırdaki kod ise geçici olarak giriş bilgilerini tutuyor.
+	dosya << user.kullanici_adi << "\n" << user.isim << "\n" << user.soyisim << "\n" << user.sifre << "\n" << user.yas << "\n" << user.telefon_numarası << "\n" << user.kayıt_zamanı << "\n";
+	/*Bu şekilde ayrı da yazılabilir belki bir yolu vardır ama bu durumda alt alta yazamadım.
 	dosya << user.isim;
 	dosya << user.soyisim;
+	dosya << user.sifre; 
 	dosya << user.yas;
-	dosya << user.sifre;
+	dosya << user.telefon_numarası; 
+	dosya << user.kayıt_zamanı;*/
 	dosya.close();
+	
+
 
 }
