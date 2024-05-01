@@ -83,7 +83,7 @@ int main() {
 
 	//Alttaki kod kullanıcının ne zaman kayıt olduğu verisini tutuyor.
 	user.kayıt_zamanı = asctime(tarih);
-	
+
 
 	//ofstream dosya("Veri.txt", ios::app);
 	//Üstteki kod her bir giriş bilgilerini tek tek dosyaya kaydediyor. Hiçbir giriş kaybolmuyor.
@@ -93,12 +93,31 @@ int main() {
 	/*Alttaki gibi ayrı da yazılabilir ama o zaman txt dosyasına alt alta yazılmıyor.Belki bir yolu vardır ama bulamadım.
 	dosya << user.isim;
 	dosya << user.soyisim;
-	dosya << user.sifre; 
+	dosya << user.sifre;
 	dosya << user.yas;
-	dosya << user.telefon_numarası; 
+	dosya << user.telefon_numarası;
 	dosya << user.kayıt_zamanı;*/
 	dosya.close();
-	
+	//Aşağı kodun amacı: ifstream dosyayı okuyor. Daha sonra liste oluşturuyoruz. Listeye aldığımız verileri kaydediyoruz.
+	ifstream dosya_if("Admin_Information.txt");
+	list<string> Admin_bilgi;
+	Admin_bilgi.push_back(user.kullanici_adi);
+	Admin_bilgi.push_back(user.isim);
+	Admin_bilgi.push_back(user.soyisim);
+	Admin_bilgi.push_back(user.telefon_numarası);
+	Admin_bilgi.push_back(user.kayıt_zamanı);
+	Admin_bilgi.push_back(user.sifre);
+	dosya_if.close();
+
+
+	dosya_if.is_open();
+
+	vector<string> dosya_if_vector;
+	string satir;
+	while (getline(dosya_if, satir)) {
+		dosya_if_vector.push_back(satir);
+	}
+
 
 
 
