@@ -9,6 +9,7 @@
 #include <fstream>
 #include <vector>
 #include <set>
+#include <algorithm>
 using namespace std;
 /*
 GEREKSİNİMLER:
@@ -39,9 +40,9 @@ int main() {
 
 	//Giriş kısmında alınacak bilgiler(Kullanıcı arayüzü)
 
-	cout << "8 ile 12 hane arasında bir kullanıcı adı belirleyiniz: \n";
+	cout << "8 ile 18 hane arasında bir kullanıcı adı belirleyiniz: \n";
 	getline(cin, user.kullanici_adi);
-	while (user.kullanici_adi.size() < 8 || user.kullanici_adi.size() > 12) {
+	while (user.kullanici_adi.size() < 8 || user.kullanici_adi.size() > 18) {
 		cout << "8 ile 12 hane arasında bir kullanıcı adı belirleyiniz: \n";
 		getline(cin, user.kullanici_adi);
 	}
@@ -60,13 +61,6 @@ int main() {
 		getline(cin, user.soyisim);
 	}
 
-	cout << "Şifre belirleyiniz: (8 ile 18 karakter arasında olmalı) \n";
-	getline(cin, user.sifre);
-	while (user.sifre.size() < 8 || user.sifre.size() > 18) {
-		cout << "Şifre belirleyiniz : (8 ile 18 karakter arasında olmalı)  \n";
-		getline(cin, user.sifre);
-	}
-
 	cout << "Yaşınız kaç: \n";
 	cin >> user.yas;
 	while ((13 < user.yas) && (user.yas > 120)) {
@@ -83,8 +77,17 @@ int main() {
 	}
 
 	//Alttaki kod kullanıcının ne zaman kayıt olduğu verisini tutuyor.
+	getline(cin, user.kayıt_zamanı);
 	user.kayıt_zamanı = asctime(tarih);
 
+	cout << "Şifre belirleyiniz: (8 ile 18 karakter arasında olmalı) \n";
+	getline(cin, user.sifre);
+	while (user.sifre.size() < 8 || user.sifre.size() > 18) {
+		cout << "Şifre belirleyiniz : (8 ile 18 karakter arasında olmalı)  \n";
+		getline(cin, user.sifre);
+	}
+
+	
 
 	//ofstream dosya("Veri.txt", ios::app);
 	//Üstteki kod her bir giriş bilgilerini tek tek dosyaya kaydediyor. Hiçbir giriş kaybolmuyor.
@@ -105,6 +108,7 @@ int main() {
 	Admin_bilgi.push_back(user.kullanici_adi);
 	Admin_bilgi.push_back(user.isim);
 	Admin_bilgi.push_back(user.soyisim);
+	Admin_bilgi.push_back(to_string(user.yas));
 	Admin_bilgi.push_back(user.telefon_numarası);
 	Admin_bilgi.push_back(user.kayıt_zamanı);
 	Admin_bilgi.push_back(user.sifre);
@@ -118,19 +122,40 @@ int main() {
 	while (getline(dosya_if, satir)) {
 		dosya_if_vector.push_back(satir);
 	}
-
+	dosya_if.close();
+	/* Bu alttaki kod doğru çalışmıyor.
 	set<string> farkli_veri;
 	set_difference(Admin_bilgi.begin(), Admin_bilgi.end(), dosya_if_vector.begin(), dosya_if_vector.end(), inserter(farkli_veri, farkli_veri.begin()));
 	
-	while (!farkli_veri.empty()) {
+	if (!farkli_veri.empty()) {
 		cout << "Giriş başarısız" << endl;
 		cout << "Giriş bilginiz yanlış!" << endl;
 		for (auto& veri : farkli_veri) {
 			cout << veri << endl;
 			
 		}
-	}
-	//Yukarıdaki olmazsa "equal_range" kodunu dene. İşlevi: iki farklı listeyi karşılaştırıyor
+	}*/
+	//Yukarıdaki olmazsa "equal_range" kodunu dene. İşlevi: iki farklı listeyi karşılaştırıyor.
+	//Aşağıdaki kod liste ve txt dosyasını karşılaştırıp girişi sağlayacak.
+	cout << dosya_if_vector.size() << endl << Admin_bilgi.size() << endl;
+	bool Başarılı_Giriş = true ;
 
+	for (int i = 0; i < dosya_if_vector.size(); ++i) {
+		if (dosya_if_vector[i] != "Admin_Information.txt") {
+			cerr << "Veriler Eşleşmiyor" << endl;
+			return false;
+		}
+	}
 	
+	if (dosya_if_vector.size() != Admin_bilgi.size()) {
+		cout << "Veriler eşleşmiyor!" << endl;
+		return false;
+	}
+	
+	else {
+		cout << "Giriş Başarılı" << endl;
+		return true;
+	}
+
+
 }
