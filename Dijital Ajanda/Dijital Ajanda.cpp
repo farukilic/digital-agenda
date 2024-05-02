@@ -8,6 +8,7 @@
 #include <ctime>
 #include <fstream>
 #include <vector>
+#include <set>
 using namespace std;
 /*
 GEREKSİNİMLER:
@@ -118,7 +119,18 @@ int main() {
 		dosya_if_vector.push_back(satir);
 	}
 
+	set<string> farkli_veri;
+	set_difference(Admin_bilgi.begin(), Admin_bilgi.end(), dosya_if_vector.begin(), dosya_if_vector.end(), inserter(farkli_veri, farkli_veri.begin()));
+	
+	while (!farkli_veri.empty()) {
+		cout << "Giriş başarısız" << endl;
+		cout << "Giriş bilginiz yanlış!" << endl;
+		for (auto& veri : farkli_veri) {
+			cout << veri << endl;
+			
+		}
+	}
+	//Yukarıdaki olmazsa "equal_range" kodunu dene. İşlevi: iki farklı listeyi karşılaştırıyor
 
-
-	cout << "31";
+	
 }
