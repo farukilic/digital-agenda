@@ -23,10 +23,10 @@ struct User {
 	string kullanici_adi;
 	string isim;
 	string soyisim;
-	string sifre;
 	int yas;
 	string telefon_numarası;
 	string kayıt_zamanı;
+	string sifre;
 };
 
 int main() {
@@ -37,6 +37,8 @@ int main() {
 	time_t simdiki_zaman = time(nullptr);
 	tm* tarih = localtime(&simdiki_zaman);
 	cout << "Şu an: "; cout << asctime(tarih) << endl;
+	
+
 
 	//Giriş kısmında alınacak bilgiler(Kullanıcı arayüzü)
 
@@ -93,7 +95,7 @@ int main() {
 	//Üstteki kod her bir giriş bilgilerini tek tek dosyaya kaydediyor. Hiçbir giriş kaybolmuyor.
 	ofstream dosya("Admin_Information.txt");
 	//Bir üst satırdaki kod ise geçici olarak giriş bilgilerini tutuyor.
-	dosya << user.kullanici_adi << "\n" << user.isim << "\n" << user.soyisim << "\n" << user.sifre << "\n" << user.yas << "\n" << user.telefon_numarası << "\n" << user.kayıt_zamanı << "\n";
+	dosya << user.kullanici_adi << "\n" << user.isim << "\n" << user.soyisim << "\n" << user.sifre << "\n" << user.yas << "\n" << user.telefon_numarası << "\n" << user.kayıt_zamanı;
 	/*Alttaki gibi ayrı da yazılabilir ama o zaman txt dosyasına alt alta yazılmıyor.Belki bir yolu vardır ama bulamadım.
 	dosya << user.isim;
 	dosya << user.soyisim;
@@ -105,23 +107,23 @@ int main() {
 	//Aşağı kodun amacı: ifstream dosyayı okuyor. Daha sonra liste oluşturuyoruz. Listeye aldığımız verileri kaydediyoruz.
 	ifstream dosya_if("Admin_Information.txt");
 	list<string> Admin_bilgi;
+	string atla;
+	getline(dosya_if, atla);
 	Admin_bilgi.push_back(user.kullanici_adi);
 	Admin_bilgi.push_back(user.isim);
 	Admin_bilgi.push_back(user.soyisim);
+	Admin_bilgi.push_back(user.sifre);
 	Admin_bilgi.push_back(to_string(user.yas));
 	Admin_bilgi.push_back(user.telefon_numarası);
 	Admin_bilgi.push_back(user.kayıt_zamanı);
-	Admin_bilgi.push_back(user.sifre);
-	dosya_if.close();
 
-
-	dosya_if.is_open();
-
+	
 	vector<string> dosya_if_vector;
 	string satir;
 	while (getline(dosya_if, satir)) {
 		dosya_if_vector.push_back(satir);
 	}
+	dosya_if_vector.insert(dosya_if_vector.begin(), user.kullanici_adi);
 	dosya_if.close();
 	/* Bu alttaki kod doğru çalışmıyor.
 	set<string> farkli_veri;
@@ -137,25 +139,53 @@ int main() {
 	}*/
 	//Yukarıdaki olmazsa "equal_range" kodunu dene. İşlevi: iki farklı listeyi karşılaştırıyor.
 	//Aşağıdaki kod liste ve txt dosyasını karşılaştırıp girişi sağlayacak.
-	cout << dosya_if_vector.size() << endl << Admin_bilgi.size() << endl;
-	bool Başarılı_Giriş = true ;
 
-	for (int i = 0; i < dosya_if_vector.size(); ++i) {
-		if (dosya_if_vector[i] != "Admin_Information.txt") {
-			cerr << "Veriler Eşleşmiyor" << endl;
-			return false;
-		}
+
+
+	/////////////////////////////////////////////////////////// Hatayı bulmaya çalışıyorum.
+	cout << dosya_if_vector.size() << endl << Admin_bilgi.size() << endl;
+
+
+	//Admin_Bilgi liste yazdırma
+	cout << "Admin Bilgileri:" << endl;
+	for (auto& veri : Admin_bilgi) {
+		cout << veri << " ";
 	}
-	
+	cout << endl;
+
+	//dosya_if_vector listesini yazdırma
+	cout << "Dosya Bilgileri:" << endl;
+	for (auto& veri : dosya_if_vector) {
+		cout << veri << " ";
+	}
+	cout << endl;
+	/////////////////////////////////////////////////////////
+
+
+
+
+
+
+	bool Başarılı_Giriş;
+
+	while (Başarılı_Giriş = false) {
+		break;
+	}
 	if (dosya_if_vector.size() != Admin_bilgi.size()) {
 		cout << "Veriler eşleşmiyor!" << endl;
 		return false;
 	}
-	
+
+	if (std::equal(Admin_bilgi.begin(), Admin_bilgi.end(), dosya_if_vector.begin(), dosya_if_vector.end())) {
+
+		cout << "Veriler eşleşmiyor!31" << endl;
+		return false;
+	}
 	else {
-		cout << "Giriş Başarılı" << endl;
+		cout << "Giriş başarılı" << endl;
 		return true;
 	}
+
 
 
 }
