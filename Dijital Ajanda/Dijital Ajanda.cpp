@@ -37,65 +37,65 @@ int main() {
 	time_t simdiki_zaman = time(nullptr);
 	tm* tarih = localtime(&simdiki_zaman);
 	cout << "Şu an: "; cout << asctime(tarih) << endl;
-	
 
 
 	//Giriş kısmında alınacak bilgiler(Kullanıcı arayüzü)
-
-	cout << "8 ile 18 hane arasında bir kullanıcı adı belirleyiniz: \n";
-	getline(cin, user.kullanici_adi);
-	while (user.kullanici_adi.size() < 8 || user.kullanici_adi.size() > 18) {
-		cout << "8 ile 12 hane arasında bir kullanıcı adı belirleyiniz: \n";
+	for (int i = 0; i < 1; i++) {
+		cout << "8 ile 18 hane arasında bir kullanıcı adı belirleyiniz: \n";
 		getline(cin, user.kullanici_adi);
-	}
+		while (user.kullanici_adi.size() < 8 || user.kullanici_adi.size() > 18) {
+			cout << "8 ile 12 hane arasında bir kullanıcı adı belirleyiniz: \n";
+			getline(cin, user.kullanici_adi);
+		}
 
-	cout << "İsminizi giriniz: \n";
-	getline(cin, user.isim);
-	while (user.isim.size() < 2 || user.isim.size() > 14) {
-		cout << "8 ile 12 hane arasında bir isim giriniz: \n";
+		cout << "İsminizi giriniz: \n";
 		getline(cin, user.isim);
-	}
+		while (user.isim.size() < 2 || user.isim.size() > 14) {
+			cout << "8 ile 12 hane arasında bir isim giriniz: \n";
+			getline(cin, user.isim);
+		}
 
-	cout << "Soyisminizi giriniz: \n";
-	getline(cin, user.soyisim);
-	while (user.soyisim.size() < 1 || user.soyisim.size() > 14) {
-		cout << "8 ile 12 hane arasında bir soyisim giriniz: \n";
+		cout << "Soyisminizi giriniz: \n";
 		getline(cin, user.soyisim);
-	}
+		while (user.soyisim.size() < 1 || user.soyisim.size() > 14) {
+			cout << "8 ile 12 hane arasında bir soyisim giriniz: \n";
+			getline(cin, user.soyisim);
+		}
 
-	cout << "Yaşınız kaç: \n";
-	cin >> user.yas;
-	while ((13 < user.yas) && (user.yas > 120)) {
-		cout << "Yaşınız uygun değildir! \n";
+		cout << "Yaşınız kaç: \n";
 		cin >> user.yas;
-	}
+		while ((13 < user.yas) && (user.yas > 120)) {
+			cout << "Yaşınız uygun değildir! \n";
+			cin >> user.yas;
+		}
 
-	cout << "Numaranızı giriniz:(Başına '0' koymayınız.)\n";
-	getline(cin, user.telefon_numarası);
-	cin >> user.telefon_numarası;
-	while (user.telefon_numarası.size() != 10) {
-		cout << "Yanlış girdiniz. Tekrar giriniz:";
+		cout << "Numaranızı giriniz:(Başına '0' koymayınız.)\n";
+		getline(cin, user.telefon_numarası);
 		cin >> user.telefon_numarası;
-	}
+		while (user.telefon_numarası.size() != 10) {
+			cout << "Yanlış girdiniz. Tekrar giriniz:";
+			cin >> user.telefon_numarası;
+		}
+		
+		//Alttaki kod kullanıcının ne zaman kayıt olduğu verisini tutuyor.
+		getline(cin, user.kayıt_zamanı);
+		user.kayıt_zamanı = asctime(tarih);
+		
 
-	//Alttaki kod kullanıcının ne zaman kayıt olduğu verisini tutuyor.
-	getline(cin, user.kayıt_zamanı);
-	user.kayıt_zamanı = asctime(tarih);
-
-	cout << "Şifre belirleyiniz: (8 ile 18 karakter arasında olmalı) \n";
-	getline(cin, user.sifre);
-	while (user.sifre.size() < 8 || user.sifre.size() > 18) {
-		cout << "Şifre belirleyiniz : (8 ile 18 karakter arasında olmalı)  \n";
+		cout << "Şifre belirleyiniz: (8 ile 18 karakter arasında olmalı) \n";
 		getline(cin, user.sifre);
-	}
+		while (user.sifre.size() < 8 || user.sifre.size() > 18) {
+			cout << "Şifre belirleyiniz : (8 ile 18 karakter arasında olmalı)  \n";
+			getline(cin, user.sifre);
+		}
 
-	
+	}
 
 	//ofstream dosya("Veri.txt", ios::app);
 	//Üstteki kod her bir giriş bilgilerini tek tek dosyaya kaydediyor. Hiçbir giriş kaybolmuyor.
 	ofstream dosya("Admin_Information.txt");
 	//Bir üst satırdaki kod ise geçici olarak giriş bilgilerini tutuyor.
-	dosya << user.kullanici_adi << "\n" << user.isim << "\n" << user.soyisim << "\n" << user.sifre << "\n" << user.yas << "\n" << user.telefon_numarası << "\n" << user.kayıt_zamanı;
+	dosya << "\n" << user.kullanici_adi << "\n" << user.isim << "\n" << user.soyisim << "\n" << user.sifre << "\n" << user.yas << "\n" << user.telefon_numarası << "\n" << user.kayıt_zamanı;
 	/*Alttaki gibi ayrı da yazılabilir ama o zaman txt dosyasına alt alta yazılmıyor.Belki bir yolu vardır ama bulamadım.
 	dosya << user.isim;
 	dosya << user.soyisim;
@@ -107,7 +107,7 @@ int main() {
 	//Aşağı kodun amacı: ifstream dosyayı okuyor. Daha sonra liste oluşturuyoruz. Listeye aldığımız verileri kaydediyoruz.
 	ifstream dosya_if("Admin_Information.txt");
 	list<string> Admin_bilgi;
-	string atla;
+	string atla;//Buradakini tanımlamamızın nedeni listeyi tek tek satırlara kaydedebilmek için 
 	getline(dosya_if, atla);
 	Admin_bilgi.push_back(user.kullanici_adi);
 	Admin_bilgi.push_back(user.isim);
@@ -115,15 +115,14 @@ int main() {
 	Admin_bilgi.push_back(user.sifre);
 	Admin_bilgi.push_back(to_string(user.yas));
 	Admin_bilgi.push_back(user.telefon_numarası);
-	Admin_bilgi.push_back(user.kayıt_zamanı);
-
 	
+
+	to_string(user.yas);
 	vector<string> dosya_if_vector;
 	string satir;
 	while (getline(dosya_if, satir)) {
 		dosya_if_vector.push_back(satir);
 	}
-	dosya_if_vector.insert(dosya_if_vector.begin(), user.kullanici_adi);
 	dosya_if.close();
 	/* Bu alttaki kod doğru çalışmıyor.
 	set<string> farkli_veri;
@@ -140,51 +139,26 @@ int main() {
 	//Yukarıdaki olmazsa "equal_range" kodunu dene. İşlevi: iki farklı listeyi karşılaştırıyor.
 	//Aşağıdaki kod liste ve txt dosyasını karşılaştırıp girişi sağlayacak.
 
-
-
-	/////////////////////////////////////////////////////////// Hatayı bulmaya çalışıyorum.
-	cout << dosya_if_vector.size() << endl << Admin_bilgi.size() << endl;
-
-
-	//Admin_Bilgi liste yazdırma
-	cout << "Admin Bilgileri:" << endl;
-	for (auto& veri : Admin_bilgi) {
-		cout << veri << " ";
-	}
-	cout << endl;
-
-	//dosya_if_vector listesini yazdırma
-	cout << "Dosya Bilgileri:" << endl;
-	for (auto& veri : dosya_if_vector) {
-		cout << veri << " ";
-	}
-	cout << endl;
-	/////////////////////////////////////////////////////////
-
-
-
-
-
-
+	//Admin girişini burada sağlıyorum.//////////////////////////////
 	bool Başarılı_Giriş;
 
 	while (Başarılı_Giriş = false) {
 		break;
 	}
-	if (dosya_if_vector.size() != Admin_bilgi.size()) {
+	
+
+	if (std::equal(dosya_if_vector.begin(), dosya_if_vector.end()-1, Admin_bilgi.begin(), Admin_bilgi.end())) {
+		cout << "Giriş başarılı" << endl;
+		return true;
+	}
+	else  {
 		cout << "Veriler eşleşmiyor!" << endl;
 		return false;
 	}
 
-	if (std::equal(Admin_bilgi.begin(), Admin_bilgi.end(), dosya_if_vector.begin(), dosya_if_vector.end())) {
-
-		cout << "Veriler eşleşmiyor!31" << endl;
-		return false;
-	}
-	else {
-		cout << "Giriş başarılı" << endl;
-		return true;
-	}
+	
+	//////////////////////////////////////////////////////////////////////////
+	
 
 
 
