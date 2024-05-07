@@ -116,7 +116,6 @@ int main() {
 	Admin_bilgi.push_back(to_string(user.yas));
 	Admin_bilgi.push_back(user.telefon_numarası);
 	
-
 	to_string(user.yas);
 	vector<string> dosya_if_vector;
 	string satir;
@@ -145,7 +144,6 @@ int main() {
 	while (Başarılı_Giriş = false) {
 		break;
 	}
-	
 
 	if (std::equal(dosya_if_vector.begin(), dosya_if_vector.end()-1, Admin_bilgi.begin(), Admin_bilgi.end())) {
 		cout << "Giriş başarılı" << endl;
@@ -155,11 +153,8 @@ int main() {
 		cout << "Veriler eşleşmiyor!" << endl;
 		return false;
 	}
-
 	
 	//////////////////////////////////////////////////////////////////////////
-	
-
 
 
 }
